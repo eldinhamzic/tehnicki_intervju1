@@ -1,0 +1,213 @@
+﻿@model IEnumerable<UnitedStateElections.ViewModels.ResultUpload>
+
+@{ 
+    ViewData["Title"] = "Index";
+    var messageError = (string)TempData["messageError"]; 
+}
+
+
+<br />
+<br />
+<h3 class="text-center">Upload your results...</h3>
+<br />
+<hr />
+<hr />
+<br />
+<br />
+
+
+
+@if (messageError != null)
+{
+    <div class="alert alert-danger" role="alert" id="porukaBox">
+    @messageError
+    </div>
+ }
+
+<div>
+
+    <form class="form-group" asp-controller="Results" asp-action="Index" method="post" enctype="multipart/form-data">
+        <div class="border border-secondary rounded">
+            <input class="form-control" placeholder="Insert file" type="file" name="file" />
+        </div>
+        <br />
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-outline-secondary">Upload</button>
+        </div>
+    </form>
+
+    <br /><br /><br />
+
+
+    <div>
+
+        <div class="accordion" id="accordion1">
+            <div class="card">
+                <div class="card-header" id="head1">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                            New York
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse1" class="collapse show" aria-labelledby="head1" data-parent="#accordion1">
+                    <div class="card-body">
+                        <div class="border border-secondary rounded">
+                            <table class="table">
+                                <thead class="bg-light">
+
+                                    <tr>
+                                        <th>Constituency</th>
+                                        <th>Candidates</th>
+                                        <th>Votes</th>
+                                        <th>Error</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+                                         @foreach (var item in Model)
+                                          {
+                                              @if (item.Constituency == "New York")
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Constituency)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Candidate)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.NumberOfVotes)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.OverrideFile)
+                                                        </td>
+                                                        <td>
+                                                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                                                        </td>
+                                                    </tr>
+                                                    }
+                                              }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="head2">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                            Chicago
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapse2" class="collapse" aria-labelledby="head2" data-parent="#accordion1">
+                    <div class="card-body">
+                        <div class="border border-secondary rounded">
+                            <table class="table">
+                                <thead class="bg-light">
+
+                                    <tr>
+                                        <th>Constituency</th>
+                                        <th>Candidates</th>
+                                        <th>Votes</th>
+                                        <th>Error</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+                                        @foreach (var item in Model)
+                                        {
+                                            @if (item.Constituency == "Miami")
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Constituency)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Candidate)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.NumberOfVotes)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.OverrideFile)
+                                                    </td>
+                                                </tr>
+                                                }
+                                             }
+                                         }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="head3">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                            NewYork
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion1">
+                    <div class="card-body">
+                        <div class="border border-secondary rounded">
+                            <table class="table">
+                                <thead class="bg-light">
+
+                                    <tr>
+                                        <th>Constituency</th>
+                                        <th>Candidates</th>
+                                        <th>Votes</th>
+                                        <th>Error</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+                                        @foreach (var item in Model)
+                                        {
+                                            @if (item.Constituency == "Texas")
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Constituency)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Candidate)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.NumberOfVotes)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.OverrideFile)
+                                                    </td>
+                                                </tr>
+                                                }
+                                            }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+

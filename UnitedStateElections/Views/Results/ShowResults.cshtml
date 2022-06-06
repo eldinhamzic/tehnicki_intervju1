@@ -1,0 +1,183 @@
+﻿@using UnitedStateElections.ViewModels
+@model UnitedStateElections.ViewModels.ResultIndex
+@{
+    ViewData["Title"] = "Index";
+    var success = (string)TempData["succesMessage"];
+    var warning = (string)TempData["warningMessage"];
+    var error = (string)TempData["errorMessage"];
+}
+
+<br />
+<br />
+<br />
+
+<h3 class="text-center">Results of US ELECTIONS</h3>
+
+<br />
+<hr />
+<hr />
+<br />
+<br />
+
+<div>
+
+
+
+
+
+    <div>
+
+        <div class="accordion" id="accoradion1">
+            <div class="card">
+                <div class="card-header" id="header1">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapseOne">
+                            MIAMI
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse1" class="collapse show" aria-labelledby="header1" data-parent="#accordion1">
+                    <div class="card-body">
+                        <div class="border border-secondary rounded">
+                            <table class="table">
+                                <thead class="bg-light">
+
+                                    <tr>
+                                        <th>Candidates</th>
+                                        <th>Votes</th>
+                                        <th>Error</th>
+                                        <th>Percentage</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+
+                                         @foreach (var x in Model.Row)
+                                            {
+
+                                                 @if (x.Constituency == "New York")
+                                                            {
+                                                    <tr>
+                                                        <td>@x.Candidate</td>
+                                                        <td>@x.NumberOfVotes</td>
+                                                        <td>@x.OverrideFile</td>
+                                                        <td>@x.Percentage</td>
+
+                                                    </tr>}}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Washington
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="border border-secondary rounded">
+                            <table class="table">
+                                <thead class="bg-light">
+
+                                    <tr>
+                                        <th>Candidates</th>
+                                        <th>Votes</th>
+                                        <th>Error</th>
+                                        <th>Percentage</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+
+                                         @foreach (var x in Model.Row)
+                                          {
+
+                                            @if (x.Constituency == "NewYork")
+                                             {
+                                                <tr>
+                                                    <td>@x.Candidate</td>
+                                                    <td>@x.NumberOfVotes</td>
+                                                    <td>@x.OverrideFile</td>
+                                                    <td>@x.Percentage</td>
+
+
+                                                </tr>}}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Texas
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="border border-secondary rounded">
+                            <table class="table">
+                                <thead class="bg-light">
+
+                                    <tr>
+                                        <th>Candidates</th>
+                                        <th>Votes</th>
+                                        <th>Error</th>
+                                        <th>Percentage</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+
+                                          @foreach (var x in Model.Row)
+                                                {
+
+                                             @if (x.Constituency == "Chicago")
+                                                        {
+                                                <tr>
+                                                   <td>@x.Candidate</td>
+                                                    <td>@x.NumberOfVotes</td>
+                                                    <td>@x.OverrideFile</td>
+                                                    <td>@x.Percentage</td>
+
+
+                                                </tr>}}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
